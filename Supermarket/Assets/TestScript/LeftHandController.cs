@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViveControllerTest : MonoBehaviour {
+public class LeftHandController : MonoBehaviour {
 
 	//A reference to the object being tracked. In this case, a controller.
 	private SteamVR_TrackedObject trackedObj;
@@ -24,7 +24,7 @@ public class ViveControllerTest : MonoBehaviour {
 	private void Start()
 	{
 
-		controller = GetComponent<CharacterController>();
+		//controller = GetComponent<CharacterController>();
 
 	}
 
@@ -41,24 +41,27 @@ public class ViveControllerTest : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// 1
+        
 		if (Controller.GetAxis() != Vector2.zero)
 		{
-			//Debug.Log(gameObject.name + Controller.GetAxis());
+			Debug.Log(gameObject.name + Controller.GetAxis().x);
 
-			m_TurnInputValue = Input.GetAxis("Horizontal");
-			m_MovementInputValue = Input.GetAxis ("Vertical");
+            m_TurnInputValue = Controller.GetAxis().y;
+            m_MovementInputValue = Controller.GetAxis().x;
 
-			transform.Rotate(0, Input.GetAxis("Horizontal") * m_TurnSpeed, 0);
+            controller.transform.Rotate(0, m_MovementInputValue * m_TurnSpeed, 0);
 
-			Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 forward = controller.transform.TransformDirection(Vector3.forward);
 
-			float curSpeed = m_Speed * Input.GetAxis("Vertical");
+            float curSpeed = m_Speed * m_TurnInputValue;
 
 			controller.SimpleMove(forward * curSpeed);
+            
 
 		}
+        
 
-		/*
+		
 		// 4
 		if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
 		{
@@ -94,7 +97,7 @@ public class ViveControllerTest : MonoBehaviour {
 		{
 			Debug.Log(gameObject.name + " Axis1 Release");
 		}
-		*/
+	
 			
 	}
 }

@@ -30,6 +30,7 @@ namespace UCL.COMPGV07 {
             experimentManager.GiveItem(code);
 
             Destroy(other.gameObject);
+            
             speaker.PlayOneShot(scanSuccess);
         }
     }

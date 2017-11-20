@@ -36,6 +36,7 @@ public class ControllerGrabObject : MonoBehaviour {
 	//When the trigger collider enters another, this sets up the other collider as a potential grab target.
 	public void OnTriggerEnter(Collider other)
 	{
+        Debug.Log("Pressed!!!");
 		SetCollidingObject(other);
 	}
 
@@ -43,12 +44,14 @@ public class ControllerGrabObject : MonoBehaviour {
 	//Without this, the collision may fail or become buggy.
 	public void OnTriggerStay(Collider other)
 	{
+        Debug.Log("Staying!!!");
 		SetCollidingObject(other);
 	}
 
 	//When the collider exits an object, abandoning an ungrabbed target, this code removes its target by setting it to null.
 	public void OnTriggerExit(Collider other)
 	{
+        Debug.Log("Exit!!!");
 		if (!collidingObject)
 		{
 			return;
