@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketG11", "SupermarketG11.csproj", "{E92412E7-5CD8-0783-9D17-E069268FE789}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketG11.Plugins", "SupermarketG11.Plugins.csproj", "{E0DE2CE3-6810-E3CD-41A8-01F9A032517D}"
