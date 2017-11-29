@@ -18,10 +18,11 @@ public class Tmove : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        print("  " + other.gameObject.name + "    碰撞了    " + gameObject.name);
+        //print("  " + other.gameObject.name + "    碰撞了    " + gameObject.name);
         if (other.gameObject.GetComponent<ProductCode>())
         {
-            print(" it is a food, we can still move!!! ");
+            print(" it is a food.");
+            other.gameObject.transform.parent = this.transform;
         }
         else
         {
@@ -33,19 +34,28 @@ public class Tmove : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        print("  " + other.gameObject.name + "  离开了  " + gameObject.name);
+        //print("  " + other.gameObject.name + "  离开了  " + gameObject.name);
         touch = 0;
-        Debug.Log("现在的t状态应该可以动 " + touch);
-        debug = 0;
+        //other.gameObject.transform.parent = null;
     }
 
     void OnCollisionEnter(Collision other)
     {
-       // print("  " + other.gameObject.name + " 非triger/有效果碰撞      " + gameObject.name);
+      
+        print("  " + other.gameObject.name + "    碰撞了    " + gameObject.name);
+        if (other.gameObject.GetComponent<ProductCode>())
+        {
+            print(" it is a food.");
+            other.gameObject.transform.parent = this.transform;
+        }
+
     }
 
     void OnCollisionExit(Collision other)
     {
-      //  print("  " + other.gameObject.name + "   有效果碰撞后离开  " + gameObject.name);
+     
+        print("  " + other.gameObject.name + "  离开了  " + gameObject.name);
+        touch = 0;
+        other.gameObject.transform.parent =null;
     }
 }
