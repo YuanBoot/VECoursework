@@ -10,12 +10,11 @@ public class ViveControllerInput : MonoBehaviour
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
-    //There is still some work to do here, including being a bit more dynamic.
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
 
-        //Get the shopping list and hide it
+        //Get the shopping list GameObject and hide it
         GameObject.Find("ShoppingList").GetComponent<Renderer>().enabled = false;
 
         //Get the list of shoppinglist items and hide them
@@ -29,40 +28,21 @@ public class ViveControllerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Controller.GetAxis() != Vector2.zero)
-        {
-            print(gameObject.name + " ------- " + Controller.GetAxis());
-        }
-
- 
-        if (Controller.GetHairTriggerDown())
-        {
-            print(gameObject.name + " Trigger Press");
-
-        }
-
-        if (Controller.GetHairTriggerUp())
-        {
-            print(gameObject.name + " Trigger Release");
-
-        }
-
         if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            //Toggle visibility of shopping list and items when the user presses the touchpad on the right controller
+            //Toggle visibility of shopping list and items when the user presses the touchpad on the controller
             GameObject.Find("ShoppingList").GetComponent<Renderer>().enabled = !GameObject.Find("ShoppingList").GetComponent<Renderer>().enabled;
+            var inventory = GetComponent<ProductInventory>();
 
             for (int i = 0; i < GameObject.Find("ShoppingList").transform.childCount; i++)
             {
-                GameObject.Find("ShoppingList").transform.GetChild(i).GetComponent<Renderer>().enabled = !GameObject.Find("ShoppingList").transform.GetChild(i).GetComponent<Renderer>().enabled;
+                var id = GameObject.Find("ShoppingList").transform.GetChild(i).GetComponent<ProductId>().id;
+                
+                if(inventory.IsShoppingListItem(id))
+                {
+                    GameObject.Find("ShoppingList").transform.GetChild(i).GetComponent<Renderer>().enabled = !GameObject.Find("ShoppingList").transform.GetChild(i).GetComponent<Renderer>().enabled;
+                }                              
             }
-
-        }
-
-        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            print(gameObject.name + " Grip Release");
-
         }
     }
 }

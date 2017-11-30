@@ -231,11 +231,14 @@
     <Compile Include="Assets\Experiment\ExperimentCreator.cs" />
     <Compile Include="Assets\Experiment\ExperimentTextAsset.cs" />
     <Compile Include="Assets\Experiment\Logging.cs" />
+    <Compile Include="Assets\G11Scripts\Fiona\ProductId.cs" />
     <Compile Include="Assets\G11Scripts\Fiona\ProductInventory.cs" />
     <Compile Include="Assets\G11Scripts\Fiona\ViveControllerInput.cs" />
     <Compile Include="Assets\G11Scripts\Mason\FPSMovement.cs" />
     <Compile Include="Assets\G11Scripts\Mason\LeftHandController.cs" />
+    <Compile Include="Assets\G11Scripts\Mason\PlayerMovement33.cs" />
     <Compile Include="Assets\G11Scripts\Mason\Tmove.cs" />
+    <Compile Include="Assets\G11Scripts\Yuan\LeftHandpreController.cs" />
     <Compile Include="Assets\G11Scripts\Yuan\PlayerGrabObject.cs" />
     <Compile Include="Assets\G11Scripts\Yuan\PlayerMovement.cs" />
     <Compile Include="Assets\G11Scripts\Yuan\PlayerTeleport.cs" />

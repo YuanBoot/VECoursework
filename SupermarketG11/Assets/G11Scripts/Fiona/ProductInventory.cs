@@ -44,7 +44,7 @@ public class ProductInventory : MonoBehaviour
     //The list of all products in the inventory
     public Dictionary<int, GameObject> ProductList { get; private set; }
 
-    private List<int> itemsOutstanding;
+    public List<int> itemsOutstanding;
 
     public void Start()
     {
@@ -69,18 +69,14 @@ public class ProductInventory : MonoBehaviour
     }
 
     //Check if the chosen item is on the shopping list by passing in the id from the selected item
-    //Will probably have to write something to get the id from the selected item....
     public bool IsShoppingListItem(int code)
     {
         if (itemsOutstanding.Contains(code))
         {
-            itemsOutstanding.Remove(code);
-            Debug.Log("Correct!");
             return true;
         }
         else
         {
-            Debug.Log("Incorrect!");
             return false;
         }
        
